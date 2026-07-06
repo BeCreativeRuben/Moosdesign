@@ -1,0 +1,188 @@
+{
+  "metadata": {
+    "title": "Moosdesign — 3D prints with character",
+    "description": "Handmade 3D prints for makers, collectors and creatives."
+  },
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "customPrints": "Custom Prints",
+    "gallery": "Gallery",
+    "about": "About",
+    "contact": "Contact",
+    "cart": "Cart",
+    "admin": "Admin",
+    "account": "Account",
+    "signIn": "Sign in",
+    "signOut": "Sign out"
+  },
+  "hero": {
+    "eyebrow": "3D Print Studio — Belgium",
+    "title": "PRINT YOUR iMAGINATION",
+    "subtitle": "High-quality 3D prints for makers, collectors and creatives. Every piece is tested and shipped with care.",
+    "ctaShop": "Browse shop",
+    "ctaCustom": "Custom request"
+  },
+  "features": {
+    "order": "ORDER",
+    "orderDesc": "Pick your favourite print from our catalogue.",
+    "print": "PRINT",
+    "printDesc": "Optimized for FDM and resin printers.",
+    "enjoy": "ENJOY",
+    "enjoyDesc": "Bring bold ideas to life."
+  },
+  "shop": {
+    "title": "Shop",
+    "subtitle": "Physical 3D prints, ready to ship.",
+    "empty": "No products available yet.",
+    "addToCart": "Add to cart",
+    "viewProduct": "View product",
+    "price": "Price",
+    "buyNow": "Buy now",
+    "redirecting": "Redirecting…",
+    "checkoutError": "Checkout failed. Please try again.",
+    "orderSuccess": "Thanks for your order! You'll receive a confirmation by email.",
+    "orderCancelled": "Checkout cancelled — your order was not placed."
+  },
+  "customPrints": {
+    "title": "Custom Prints",
+    "subtitle": "Got a unique idea? Tell us about it.",
+    "email": "Email address",
+    "description": "Description",
+    "descriptionHint": "The more details the better — size, material, colour, use case, deadline…",
+    "file": "File (optional)",
+    "fileHint": "STL, OBJ or reference images — max. 10 MB",
+    "submit": "Submit request",
+    "submitting": "Sending…",
+    "success": "Thanks! We'll get back to you as soon as possible.",
+    "error": "Something went wrong. Please try again.",
+    "loginPrompt": "Sign in to view your requests.",
+    "myRequests": "My requests"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": "A selection of prints, renders and client work."
+  },
+  "about": {
+    "title": "About Moosdesign",
+    "subtitle": "Creative 3D print studio",
+    "body": "Moosdesign creates physical 3D prints with character — from playful monsters to custom designs. Every piece is carefully printed, checked and shipped."
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Questions? Send us a message.",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Send",
+    "sending": "Sending…",
+    "success": "Message sent! We'll get back to you soon.",
+    "error": "Something went wrong. Please try again."
+  },
+  "auth": {
+    "signInTitle": "Sign in",
+    "signUpTitle": "Create account",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "signIn": "Sign in",
+    "signUp": "Register",
+    "orContinueWith": "Or continue with",
+    "google": "Google",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "createAccount": "Create one",
+    "signInInstead": "Sign in",
+    "backToSite": "← Back to site"
+  },
+  "account": {
+    "title": "My account",
+    "orders": "Orders",
+    "customRequests": "Custom requests",
+    "noRequests": "No requests yet.",
+    "status": "Status"
+  },
+  "admin": {
+    "title": "Admin",
+    "products": "Products",
+    "orders": "Orders",
+    "customRequests": "Custom requests",
+    "addProduct": "Add product",
+    "edit": "Edit",
+    "delete": "Delete",
+    "published": "Published",
+    "draft": "Draft"
+  },
+  "footer": {
+    "tagline": "Print your imagination.",
+    "blurb": "Physical 3D prints with character — from playful designs to custom made-to-order pieces.",
+    "explore": "Explore",
+    "connect": "Connect",
+    "rights": "All rights reserved."
+  },
+  "home": {
+    "marquee": "Moosdesign services",
+    "featuredTitle": "From the shop",
+    "featuredSubtitle": "Popular prints, ready to ship.",
+    "featuredEmpty": "New prints coming soon.",
+    "featuredCta": "All products",
+    "viewProduct": "View",
+    "galleryTitle": "Gallery",
+    "gallerySubtitle": "Prints, renders and client work.",
+    "galleryCta": "Full gallery",
+    "customTitle": "Got something unique in mind?",
+    "customSubtitle": "Send us your idea — we're happy to advise on material, size and finish.",
+    "customCta": "Start custom request"
+  },
+  "landing": {
+    "nav": {
+      "gallery": "Gallery",
+      "shop": "Shop",
+      "custom": "Commission",
+      "about": "About",
+      "contact": "Contact"
+    },
+    "marqueeLabel": "Moosdesign services",
+    "hero": {
+      "eyebrow": "3D Design & Print Studio",
+      "line1": "PRINT",
+      "line2": "YOUR",
+      "line3": "WORLD",
+      "body": "Physical 3D prints with character — from playful catalogue pieces to one-of-one commissions. FDM and resin, printed and shipped from Belgium.",
+      "asideLabel": "Two paths",
+      "asideBody": "Commission a unique piece, or browse the ready-made collection.",
+      "ctaCustom": "Start a commission",
+      "ctaShop": "Browse the shop"
+    },
+    "process": {
+      "label": "Custom work",
+      "title": "YOUR VISION. OUR FILAMENT.",
+      "body": "Send a brief, approve the model, we print and deliver. Simple, direct, no noise.",
+      "cta": "Start custom request",
+      "steps": {
+        "brief": "Brief",
+        "model": "Model",
+        "print": "Print",
+        "deliver": "Deliver"
+      }
+    },
+    "shop": {
+      "title": "The shop",
+      "all": "Ready to ship",
+      "placeholder": "New print incoming",
+      "badgeBestseller": "Bestseller",
+      "badgeNew": "New",
+      "badgeSoon": "Soon"
+    },
+    "gallery": {
+      "label": "Archive",
+      "title": "Selected work",
+      "cta": "Full gallery"
+    },
+    "footer": {
+      "tagline": "Print your imagination.",
+      "contact": "Contact",
+      "shop": "Shop",
+      "rights": "All rights reserved"
+    }
+  }
+}

@@ -1,0 +1,188 @@
+{
+  "metadata": {
+    "title": "Moosdesign — 3D prints met karakter",
+    "description": "Handgemaakte 3D prints voor makers, verzamelaars en creatievelingen."
+  },
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "customPrints": "Custom Prints",
+    "gallery": "Galerij",
+    "about": "Over ons",
+    "contact": "Contact",
+    "cart": "Winkelwagen",
+    "admin": "Admin",
+    "account": "Account",
+    "signIn": "Inloggen",
+    "signOut": "Uitloggen"
+  },
+  "hero": {
+    "eyebrow": "3D Print Studio — België",
+    "title": "PRINT JE iMAGINATIE",
+    "subtitle": "Hoogwaardige 3D prints voor makers, verzamelaars en creatievelingen. Elk stuk wordt getest en met zorg verstuurd.",
+    "ctaShop": "Naar de shop",
+    "ctaCustom": "Custom aanvraag"
+  },
+  "features": {
+    "order": "BESTEL",
+    "orderDesc": "Kies je favoriete print uit onze catalogus.",
+    "print": "PRINT",
+    "printDesc": "Geoptimaliseerd voor FDM en resin printers.",
+    "enjoy": "GENIET",
+    "enjoyDesc": "Breng gedurfde ideeën tot leven."
+  },
+  "shop": {
+    "title": "Shop",
+    "subtitle": "Fysieke 3D prints, klaar om te versturen.",
+    "empty": "Nog geen producten beschikbaar.",
+    "addToCart": "In winkelwagen",
+    "viewProduct": "Bekijk product",
+    "price": "Prijs",
+    "buyNow": "Koop nu",
+    "redirecting": "Doorverwijzen…",
+    "checkoutError": "Checkout mislukt. Probeer opnieuw.",
+    "orderSuccess": "Bedankt voor je bestelling! Je ontvangt een bevestiging per e-mail.",
+    "orderCancelled": "Checkout geannuleerd — je bestelling is niet geplaatst."
+  },
+  "customPrints": {
+    "title": "Custom Prints",
+    "subtitle": "Heb je een uniek idee? Vertel ons erover.",
+    "email": "E-mailadres",
+    "description": "Beschrijving",
+    "descriptionHint": "Hoe meer details, hoe beter we je kunnen helpen — formaat, materiaal, kleur, gebruik, deadline…",
+    "file": "Bestand (optioneel)",
+    "fileHint": "STL, OBJ of referentiebeelden — max. 10 MB",
+    "submit": "Aanvraag versturen",
+    "submitting": "Versturen…",
+    "success": "Bedankt! We nemen zo snel mogelijk contact op.",
+    "error": "Er ging iets mis. Probeer opnieuw.",
+    "loginPrompt": "Log in om je aanvragen te bekijken.",
+    "myRequests": "Mijn aanvragen"
+  },
+  "gallery": {
+    "title": "Galerij",
+    "subtitle": "Een selectie van prints, renders en klantwerk."
+  },
+  "about": {
+    "title": "Over Moosdesign",
+    "subtitle": "Creatief 3D print atelier",
+    "body": "Moosdesign maakt fysieke 3D prints met karakter — van speelse monsters tot custom ontwerpen. Elk stuk wordt met zorg geprint, gecontroleerd en verstuurd."
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Vragen? Stuur ons een bericht.",
+    "email": "E-mail",
+    "message": "Bericht",
+    "submit": "Versturen",
+    "sending": "Versturen…",
+    "success": "Bericht verstuurd! We nemen snel contact op.",
+    "error": "Er ging iets mis. Probeer opnieuw."
+  },
+  "auth": {
+    "signInTitle": "Inloggen",
+    "signUpTitle": "Account aanmaken",
+    "email": "E-mail",
+    "password": "Wachtwoord",
+    "name": "Naam",
+    "signIn": "Inloggen",
+    "signUp": "Registreren",
+    "orContinueWith": "Of ga verder met",
+    "google": "Google",
+    "noAccount": "Nog geen account?",
+    "hasAccount": "Al een account?",
+    "createAccount": "Maak er een aan",
+    "signInInstead": "Log in",
+    "backToSite": "← Terug naar site"
+  },
+  "account": {
+    "title": "Mijn account",
+    "orders": "Bestellingen",
+    "customRequests": "Custom aanvragen",
+    "noRequests": "Nog geen aanvragen.",
+    "status": "Status"
+  },
+  "admin": {
+    "title": "Admin",
+    "products": "Producten",
+    "orders": "Bestellingen",
+    "customRequests": "Custom aanvragen",
+    "addProduct": "Product toevoegen",
+    "edit": "Bewerken",
+    "delete": "Verwijderen",
+    "published": "Gepubliceerd",
+    "draft": "Concept"
+  },
+  "footer": {
+    "tagline": "Print je verbeelding.",
+    "blurb": "Fysieke 3D prints met karakter — van speelse designs tot custom ontwerpen op maat.",
+    "explore": "Ontdek",
+    "connect": "Contact",
+    "rights": "Alle rechten voorbehouden."
+  },
+  "home": {
+    "marquee": "Moosdesign diensten",
+    "featuredTitle": "Uit de shop",
+    "featuredSubtitle": "Populaire prints, klaar om te versturen.",
+    "featuredEmpty": "Binnenkort nieuwe prints.",
+    "featuredCta": "Alle producten",
+    "viewProduct": "Bekijk",
+    "galleryTitle": "Galerij",
+    "gallerySubtitle": "Prints, renders en klantwerk.",
+    "galleryCta": "Volledige galerij",
+    "customTitle": "Iets unieks in gedachten?",
+    "customSubtitle": "Stuur ons je idee — we denken graag mee over materiaal, formaat en afwerking.",
+    "customCta": "Start custom aanvraag"
+  },
+  "landing": {
+    "nav": {
+      "gallery": "Galerij",
+      "shop": "Shop",
+      "custom": "Commission",
+      "about": "Over ons",
+      "contact": "Contact"
+    },
+    "marqueeLabel": "Moosdesign diensten",
+    "hero": {
+      "eyebrow": "3D Design & Print Studio",
+      "line1": "PRINT",
+      "line2": "JE",
+      "line3": "WERELD",
+      "body": "Fysieke 3D prints met karakter — van speelse catalogusstukken tot unieke commissions. FDM en resin, geprint en verstuurd vanuit België.",
+      "asideLabel": "Twee paden",
+      "asideBody": "Bestel een uniek stuk op maat, of blader door de kant-en-klare collectie.",
+      "ctaCustom": "Start een commission",
+      "ctaShop": "Naar de shop"
+    },
+    "process": {
+      "label": "Custom work",
+      "title": "JOUW VISIE. ONS FILAMENT.",
+      "body": "Stuur een brief, keur het model goed, wij printen en leveren. Simpel, direct, zonder ruis.",
+      "cta": "Start custom aanvraag",
+      "steps": {
+        "brief": "Brief",
+        "model": "Model",
+        "print": "Print",
+        "deliver": "Lever"
+      }
+    },
+    "shop": {
+      "title": "De shop",
+      "all": "Klaar om te versturen",
+      "placeholder": "Nieuwe print onderweg",
+      "badgeBestseller": "Bestseller",
+      "badgeNew": "Nieuw",
+      "badgeSoon": "Binnenkort"
+    },
+    "gallery": {
+      "label": "Archief",
+      "title": "Geselecteerd werk",
+      "cta": "Volledige galerij"
+    },
+    "footer": {
+      "tagline": "Print je verbeelding.",
+      "contact": "Contact",
+      "shop": "Shop",
+      "rights": "Alle rechten voorbehouden"
+    }
+  }
+}
