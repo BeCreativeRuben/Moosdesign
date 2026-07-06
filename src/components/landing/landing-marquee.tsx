@@ -1,22 +1,33 @@
 import { getTranslations } from "next-intl/server";
 
-const items = ["FDM", "RESIN", "CUSTOM", "BELGIUM", "MOOSDESIGN", "3D PRINTS"];
+const ITEMS = ["FDM", "RESIN", "CUSTOM", "BELGIUM", "MOOSDESIGN", "3D PRINTS"] as const;
+
+/** Repeat enough times so one group always fills ultra-wide viewports. */
+const GROUP_ITEMS = Array.from({ length: 6 }, () => ITEMS).flat();
+
+function MarqueeGroup({ hidden = false }: { hidden?: boolean }) {
+  return (
+    <div className="landing-marquee__group" aria-hidden={hidden || undefined}>
+      {GROUP_ITEMS.map((label, i) => (
+        <span key={`${label}-${i}`} className="landing-marquee__item">
+          {label}
+          <span className="landing-marquee__plus" aria-hidden>
+            +
+          </span>
+        </span>
+      ))}
+    </div>
+  );
+}
 
 export async function LandingMarquee() {
   const t = await getTranslations("landing");
-  const labels = [...items, ...items];
 
   return (
     <div className="landing-marquee" aria-label={t("marqueeLabel")}>
       <div className="landing-marquee__track">
-        {labels.map((label, i) => (
-          <span key={`${label}-${i}`} className="landing-marquee__item">
-            {label}
-            <span className="landing-marquee__plus" aria-hidden>
-              +
-            </span>
-          </span>
-        ))}
+        <MarqueeGroup />
+        <MarqueeGroup hidden />
       </div>
     </div>
   );

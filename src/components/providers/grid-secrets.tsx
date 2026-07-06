@@ -6,7 +6,7 @@ import { GRID_WHISPERS, whisperPosition } from "@/lib/viewport/grid-whispers";
 import { getPointer } from "@/lib/viewport/pointer-state";
 
 const VOID_SELECTOR =
-  "a, button, input, textarea, select, .content-panel, header, footer, [data-secret], label";
+  "a, button, input, textarea, select, .landing, header, footer, [data-secret], label";
 
 function localeFromPath() {
   return window.location.pathname.startsWith("/en") ? "en" : "nl";
@@ -31,7 +31,6 @@ export function GridSecrets() {
     let voidTimer = 0;
 
     let scanTimer = 0;
-    let running = true;
     const foundSecrets = new Set<string>();
     const dwellStart: Record<string, number> = {};
 
@@ -101,8 +100,6 @@ export function GridSecrets() {
     };
 
     const tick = () => {
-      if (!running) return;
-
       const { mx, my } = getPointer();
       const locale = localeFromPath();
       const margin = 48;
@@ -177,17 +174,15 @@ export function GridSecrets() {
           });
         }
       }
-
-      window.requestAnimationFrame(tick);
     };
 
-    window.requestAnimationFrame(tick);
+    const interval = window.setInterval(tick, 120);
 
     window.addEventListener("keydown", onKeyDown);
     window.addEventListener("click", onClick);
 
     return () => {
-      running = false;
+      window.clearInterval(interval);
       window.removeEventListener("keydown", onKeyDown);
       window.removeEventListener("click", onClick);
       if (cornerTimer) window.clearTimeout(cornerTimer);

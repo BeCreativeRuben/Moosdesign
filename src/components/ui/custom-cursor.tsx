@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { getLenis } from "@/lib/viewport/lenis-instance";
+import { ensureFrameLoop, subscribeFrame } from "@/lib/viewport/frame-loop";
 import { setPointer } from "@/lib/viewport/pointer-state";
 
 type CursorState = "default" | "hover" | "active" | "secret";
@@ -9,7 +9,8 @@ type CursorState = "default" | "hover" | "active" | "secret";
 const HOVER_SELECTOR =
   "a, button, [role='button'], input, textarea, select, label, summary, [data-cursor='hover']";
 
-const RING_LERP = 0.38;
+const RING_LERP = 0.28;
+const IDLE_MS = 120;
 
 export function CustomCursor() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -24,14 +25,14 @@ export function CustomCursor() {
     const html = document.documentElement;
     html.classList.add("custom-cursor-active");
 
-    let mx = 0;
-    let my = 0;
-    let rx = 0;
-    let ry = 0;
+    let mx = window.innerWidth * 0.5;
+    let my = window.innerHeight * 0.35;
+    let rx = mx;
+    let ry = my;
     let state: CursorState = "default";
     let visible = false;
-    let raf = 0;
-    let running = false;
+    let lastMove = performance.now();
+    let hoverTarget: Element | null = null;
 
     const setState = (next: CursorState) => {
       if (state === next) return;
@@ -39,21 +40,69 @@ export function CustomCursor() {
       rootRef.current?.setAttribute("data-state", next);
     };
 
-    const tick = (time: number) => {
-      getLenis()?.raf(time);
+    const syncHover = (target: Element | null) => {
+      const next = target?.closest(HOVER_SELECTOR) ?? null;
+      if (hoverTarget === next) return;
+      hoverTarget = next;
+      setState(next ? "hover" : "default");
+    };
+
+    const onMove = (e: PointerEvent) => {
+      if (e.pointerType !== "mouse") return;
+
+      mx = e.clientX;
+      my = e.clientY;
+      lastMove = performance.now();
+      setPointer(mx, my);
+
+      if (!visible) {
+        visible = true;
+        rootRef.current?.setAttribute("data-visible", "true");
+      }
+
+      syncHover(e.target as Element | null);
+      ensureFrameLoop();
+    };
+
+    const onDown = (e: PointerEvent) => {
+      if (e.pointerType !== "mouse") return;
+      setState("active");
+    };
+
+    const onUp = (e: PointerEvent) => {
+      if (e.pointerType !== "mouse") return;
+      syncHover(e.target as Element | null);
+    };
+
+    const onLeave = () => {
+      visible = false;
+      rootRef.current?.setAttribute("data-visible", "false");
+    };
+
+    const onEnter = () => {
+      if (visible) rootRef.current?.setAttribute("data-visible", "true");
+    };
+
+    const onMushroom = () => setState("secret");
+    const onMushroomEnd = () => setState(hoverTarget ? "hover" : "default");
+
+    const unsubscribe = subscribeFrame(() => {
+      const ring = ringRef.current;
+      const dot = dotRef.current;
 
       const dx = mx - rx;
       const dy = my - ry;
-      rx += dx * RING_LERP;
-      ry += dy * RING_LERP;
+      const moving = Math.abs(dx) > 0.35 || Math.abs(dy) > 0.35;
+      const recent = performance.now() - lastMove < IDLE_MS;
 
-      if (Math.abs(dx) < 0.4 && Math.abs(dy) < 0.4) {
+      if (moving) {
+        rx += dx * RING_LERP;
+        ry += dy * RING_LERP;
+      } else {
         rx = mx;
         ry = my;
       }
 
-      const ring = ringRef.current;
-      const dot = dotRef.current;
       if (ring) {
         ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
       }
@@ -61,92 +110,28 @@ export function CustomCursor() {
         dot.style.transform = `translate3d(${mx}px, ${my}px, 0) translate(-50%, -50%)`;
       }
 
-      html.style.setProperty("--grid-x", `${mx}px`);
-      html.style.setProperty("--grid-y", `${my}px`);
-      if (visible) html.style.setProperty("--grid-active", "1");
+      return moving || recent || state === "active";
+    });
 
-      raf = requestAnimationFrame(tick);
-    };
-
-    const onVisibility = () => {
-      if (document.hidden) stop();
-      else start();
-    };
-
-    const start = () => {
-      if (running) return;
-      running = true;
-      raf = requestAnimationFrame(tick);
-    };
-
-    const stop = () => {
-      running = false;
-      if (raf) cancelAnimationFrame(raf);
-      raf = 0;
-    };
-
-    const onMove = (e: MouseEvent) => {
-      mx = e.clientX;
-      my = e.clientY;
-      setPointer(mx, my);
-      if (!visible) {
-        visible = true;
-        rootRef.current?.setAttribute("data-visible", "true");
-      }
-      start();
-    };
-
-    const onOver = (e: MouseEvent) => {
-      const target = (e.target as Element | null)?.closest(HOVER_SELECTOR);
-      setState(target ? "hover" : "default");
-    };
-
-    const onDown = () => setState("active");
-    const onUp = (e: MouseEvent) => {
-      const target = (e.target as Element | null)?.closest(HOVER_SELECTOR);
-      setState(target ? "hover" : "default");
-    };
-
-    const onLeave = () => {
-      visible = false;
-      rootRef.current?.setAttribute("data-visible", "false");
-      html.style.setProperty("--grid-active", "0");
-    };
-
-    const onEnter = () => {
-      if (!coarse && visible) html.style.setProperty("--grid-active", "1");
-    };
-
-    const onMushroom = () => setState("secret");
-    const onMushroomEnd = () => setState("default");
-
-    mx = window.innerWidth * 0.5;
-    my = window.innerHeight * 0.35;
     setPointer(mx, my);
-    rx = mx;
-    ry = my;
-    start();
+    ensureFrameLoop();
 
-    window.addEventListener("mousemove", onMove, { passive: true });
-    window.addEventListener("mouseover", onOver, { passive: true });
-    window.addEventListener("mousedown", onDown);
-    window.addEventListener("mouseup", onUp);
-    document.documentElement.addEventListener("mouseleave", onLeave);
-    document.documentElement.addEventListener("mouseenter", onEnter);
+    window.addEventListener("pointermove", onMove, { passive: true });
+    window.addEventListener("pointerdown", onDown);
+    window.addEventListener("pointerup", onUp);
+    document.documentElement.addEventListener("pointerleave", onLeave);
+    document.documentElement.addEventListener("pointerenter", onEnter);
     window.addEventListener("moos:mushroom-on", onMushroom);
     window.addEventListener("moos:mushroom-off", onMushroomEnd);
-    document.addEventListener("visibilitychange", onVisibility);
 
     return () => {
-      stop();
-      document.removeEventListener("visibilitychange", onVisibility);
+      unsubscribe();
       html.classList.remove("custom-cursor-active");
-      window.removeEventListener("mousemove", onMove);
-      window.removeEventListener("mouseover", onOver);
-      window.removeEventListener("mousedown", onDown);
-      window.removeEventListener("mouseup", onUp);
-      document.documentElement.removeEventListener("mouseleave", onLeave);
-      document.documentElement.removeEventListener("mouseenter", onEnter);
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerdown", onDown);
+      window.removeEventListener("pointerup", onUp);
+      document.documentElement.removeEventListener("pointerleave", onLeave);
+      document.documentElement.removeEventListener("pointerenter", onEnter);
       window.removeEventListener("moos:mushroom-on", onMushroom);
       window.removeEventListener("moos:mushroom-off", onMushroomEnd);
     };
@@ -160,7 +145,9 @@ export function CustomCursor() {
       data-visible="false"
       aria-hidden
     >
-      <div ref={ringRef} className="custom-cursor__ring" />
+      <div ref={ringRef} className="custom-cursor__ring">
+        <span className="custom-cursor__crosshair" aria-hidden />
+      </div>
       <div ref={dotRef} className="custom-cursor__dot" />
     </div>
   );

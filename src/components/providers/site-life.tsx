@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { CustomCursor } from "@/components/ui/custom-cursor";
 import { SecretToast, revealSecret } from "@/components/ui/secret-toast";
 import { GridSecrets } from "@/components/providers/grid-secrets";
+import { GridWhispers } from "@/components/ui/grid-whispers";
 
 const KONAMI = [
   "ArrowUp",
@@ -152,13 +153,13 @@ export function SiteLife() {
       }
 
       if (e.shiftKey) {
-        document.documentElement.style.setProperty("--grid-spotlight-size", "420px");
+        document.documentElement.classList.add("grid-scan");
       }
     };
 
     const onKeyUp = (e: KeyboardEvent) => {
       if (!e.shiftKey) {
-        document.documentElement.style.setProperty("--grid-spotlight-size", "280px");
+        document.documentElement.classList.remove("grid-scan");
       }
     };
 
@@ -221,16 +222,15 @@ export function SiteLife() {
       if (moosTimer) window.clearTimeout(moosTimer);
       if (archiveTimer) window.clearTimeout(archiveTimer);
       if (logoTimer) window.clearTimeout(logoTimer);
-      document.documentElement.style.setProperty("--grid-spotlight-size", "280px");
     };
   }, []);
 
   return (
     <>
       <CustomCursor />
+      <GridWhispers />
       <GridSecrets />
       <SecretToast />
-      <div className="spore-field" aria-hidden />
     </>
   );
 }

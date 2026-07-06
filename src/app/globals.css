@@ -69,22 +69,6 @@ html {
   scroll-behavior: auto;
 }
 
-html.lenis {
-  height: auto;
-}
-
-html.lenis body {
-  height: auto;
-}
-
-html.lenis-scrolling {
-  scroll-behavior: auto;
-}
-
-html.lenis-scrolling.lenis-smooth {
-  scroll-behavior: auto;
-}
-
 body {
   background: var(--concrete);
   color: var(--ink);
@@ -128,68 +112,30 @@ html.mushroom-mode *::-moz-selection {
   color: var(--signal);
 }
 
-/* ── Interactive viewport grid (mouse spotlight) ── */
-.interactive-grid-bg {
+/* ── Site backdrop (static — no per-frame repaints) ── */
+.site-backdrop {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  contain: paint;
-}
-
-.interactive-grid-bg__base {
-  position: absolute;
-  inset: 0;
   background-color: var(--concrete);
-  background-image:
-    linear-gradient(var(--grid-faint) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-faint) 1px, transparent 1px);
-  background-size: var(--grid-size) var(--grid-size);
+  contain: strict;
 }
 
-.interactive-grid-bg__spotlight {
-  position: absolute;
+.grid-whispers-layer {
+  position: fixed;
   inset: 0;
-  opacity: var(--grid-active);
-  transition: opacity 0.35s ease;
-  background-image:
-    linear-gradient(var(--grid-bright) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-bright) 1px, transparent 1px);
-  background-size: var(--grid-size) var(--grid-size);
-  -webkit-mask-image: radial-gradient(
-    circle var(--grid-spotlight-size) at var(--grid-x) var(--grid-y),
-    rgb(0 0 0) 0%,
-    transparent 72%
-  );
-  mask-image: radial-gradient(
-    circle var(--grid-spotlight-size) at var(--grid-x) var(--grid-y),
-    rgb(0 0 0) 0%,
-    transparent 72%
-  );
-}
-
-.interactive-grid-bg__grain {
-  position: absolute;
-  inset: 0;
-  opacity: 0.2;
-  background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1' height='1' fill='%23000' opacity='0.08'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%23000' opacity='0.08'/%3E%3C/svg%3E");
-  background-size: 4px 4px;
-}
-
-.interactive-grid-bg__whispers {
-  position: absolute;
-  inset: 0;
+  z-index: 1;
   pointer-events: none;
-  -webkit-mask-image: radial-gradient(
-    circle var(--grid-spotlight-size) at var(--grid-x) var(--grid-y),
-    rgb(0 0 0) 0%,
-    transparent 72%
-  );
-  mask-image: radial-gradient(
-    circle var(--grid-spotlight-size) at var(--grid-x) var(--grid-y),
-    rgb(0 0 0) 0%,
-    transparent 72%
-  );
+  opacity: 0;
+  visibility: hidden;
+  contain: strict;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+html.grid-scan .grid-whispers-layer {
+  opacity: 1;
+  visibility: visible;
 }
 
 .grid-whisper {
@@ -200,23 +146,17 @@ html.mushroom-mode *::-moz-selection {
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgb(255 255 255 / 0.92);
-  opacity: 0.95;
+  color: var(--flare);
+  opacity: 0.85;
   user-select: none;
 }
 
-html.grid-scan .interactive-grid-bg__whispers {
-  -webkit-mask-image: none;
-  mask-image: none;
-}
-
-html.grid-scan .grid-whisper {
-  color: var(--signal);
-  opacity: 0.9;
-}
-
 html.mushroom-mode .grid-whisper {
-  color: rgb(236 232 223 / 0.95);
+  color: var(--cream);
+}
+
+html.mushroom-mode .site-backdrop {
+  background-color: #8a8780;
 }
 
 /* ── Textures (lightweight — no SVG filters) ── */
@@ -671,10 +611,6 @@ html.mushroom-mode .grid-whisper {
   .btn-pill:hover {
     transform: none;
   }
-
-  .interactive-grid-bg__spotlight {
-    opacity: 0.35;
-  }
 }
 
 @keyframes marquee {
@@ -747,7 +683,7 @@ html.mushroom-mode .grid-whisper {
   border: 1px solid rgb(15 13 11 / 0.78);
 }
 
-/* ── Custom cursor ── */
+/* ── Custom cursor (landing editorial) ── */
 html.custom-cursor-active,
 html.custom-cursor-active * {
   cursor: none !important;
@@ -758,6 +694,7 @@ html.custom-cursor-active * {
   inset: 0;
   z-index: 9999;
   pointer-events: none;
+  contain: strict;
 }
 
 .custom-cursor__ring,
@@ -767,30 +704,63 @@ html.custom-cursor-active * {
   left: 0;
   pointer-events: none;
   will-change: transform;
+  contain: layout style paint;
 }
 
 .custom-cursor__ring {
-  height: 36px;
-  width: 36px;
-  border: 1px solid var(--ink-deep);
+  display: grid;
+  place-items: center;
+  height: 24px;
+  width: 24px;
+  border: 2px solid var(--ink-deep);
   opacity: 0;
   transition:
-    height 0.15s ease,
-    width 0.15s ease,
-    border-color 0.15s ease,
-    background-color 0.15s ease,
-    opacity 0.2s ease;
+    height 0.12s ease,
+    width 0.12s ease,
+    border-color 0.12s ease,
+    background-color 0.12s ease,
+    opacity 0.15s ease;
+}
+
+.custom-cursor__crosshair {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  opacity: 0;
+  transition: opacity 0.12s ease;
+}
+
+.custom-cursor__crosshair::before,
+.custom-cursor__crosshair::after {
+  content: "";
+  position: absolute;
+  background: var(--flare);
+}
+
+.custom-cursor__crosshair::before {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform: translateY(-50%);
+}
+
+.custom-cursor__crosshair::after {
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  transform: translateX(-50%);
 }
 
 .custom-cursor__dot {
-  height: 6px;
-  width: 6px;
-  background: var(--ink-deep);
+  height: 5px;
+  width: 5px;
+  background: var(--flare);
   opacity: 0;
   transition:
-    transform 0.08s linear,
-    background-color 0.2s ease,
-    opacity 0.25s ease;
+    background-color 0.12s ease,
+    opacity 0.15s ease;
 }
 
 .custom-cursor[data-visible="true"] .custom-cursor__ring,
@@ -799,27 +769,40 @@ html.custom-cursor-active * {
 }
 
 .custom-cursor[data-state="hover"] .custom-cursor__ring {
-  height: 52px;
-  width: 52px;
-  border-color: var(--signal);
-  background: rgb(214 40 40 / 0.08);
+  height: 36px;
+  width: 36px;
+  border-color: var(--flare);
+  background: rgb(232 90 31 / 0.1);
+}
+
+.custom-cursor[data-state="hover"] .custom-cursor__crosshair {
+  opacity: 1;
 }
 
 .custom-cursor[data-state="active"] .custom-cursor__ring {
-  height: 28px;
-  width: 28px;
+  height: 18px;
+  width: 18px;
+  border-color: var(--ink-deep);
+  background: rgb(15 13 11 / 0.08);
+}
+
+.custom-cursor[data-state="active"] .custom-cursor__dot {
+  background: var(--ink-deep);
 }
 
 .custom-cursor[data-state="secret"] .custom-cursor__ring {
-  height: 64px;
-  width: 64px;
-  border-radius: 9999px;
-  border-color: var(--signal);
-  background: rgb(214 40 40 / 0.14);
+  height: 44px;
+  width: 44px;
+  border-color: var(--flare);
+  background: rgb(232 90 31 / 0.16);
 }
 
 .custom-cursor[data-state="secret"] .custom-cursor__dot {
-  background: var(--signal);
+  background: var(--flare);
+}
+
+.custom-cursor[data-state="secret"] .custom-cursor__crosshair {
+  opacity: 1;
 }
 
 /* ── Secrets + mushroom mode ── */
@@ -839,58 +822,7 @@ html.custom-cursor-active * {
 }
 
 html.mushroom-mode {
-  --grid-bright: rgb(214 40 40 / 0.62);
-  --grid-faint: rgb(236 232 223 / 0.12);
-}
-
-html.mushroom-mode .interactive-grid-bg__base {
-  background-color: #8a8780;
-}
-
-html.mushroom-mode .interactive-grid-bg__spotlight {
-  opacity: 1;
-}
-
-html.mushroom-mode .spore-field {
-  opacity: 1;
-}
-
-html.moos-pulse .interactive-grid-bg__spotlight {
-  animation: grid-pulse 0.7s ease;
-}
-
-@keyframes grid-pulse {
-  0%,
-  100% {
-    opacity: var(--grid-active);
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-.spore-field {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.8s ease;
-  background-image:
-    radial-gradient(circle at 15% 20%, rgb(214 40 40 / 0.12) 0 2px, transparent 3px),
-    radial-gradient(circle at 78% 34%, rgb(236 232 223 / 0.2) 0 1px, transparent 2px),
-    radial-gradient(circle at 42% 72%, rgb(214 40 40 / 0.1) 0 2px, transparent 3px),
-    radial-gradient(circle at 88% 81%, rgb(236 232 223 / 0.16) 0 1px, transparent 2px);
-  animation: spore-drift 16s linear infinite;
-}
-
-@keyframes spore-drift {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-24px, -18px, 0);
-  }
+  --grid-bright: rgb(232 90 31 / 0.5);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -899,8 +831,7 @@ html.moos-pulse .interactive-grid-bg__spotlight {
     cursor: auto !important;
   }
 
-  .custom-cursor,
-  .spore-field {
+  .custom-cursor {
     display: none;
   }
 
@@ -925,6 +856,12 @@ html.moos-pulse .interactive-grid-bg__spotlight {
   width: 100%;
   min-width: 0;
   overflow-x: clip;
+}
+
+.landing > section,
+.landing > footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
 }
 
 .landing-eyebrow {
@@ -1957,15 +1894,33 @@ html.moos-pulse .interactive-grid-bg__spotlight {
 .landing-marquee__track {
   display: flex;
   width: max-content;
-  animation: marquee 28s linear infinite;
+  flex-wrap: nowrap;
+  animation: landing-marquee-scroll 60s linear infinite;
   will-change: transform;
+}
+
+.landing-marquee__group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+@keyframes landing-marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
 .landing-marquee__item {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   gap: 2.5rem;
   padding-right: 2.5rem;
+  white-space: nowrap;
   font-family: var(--font-brutal), sans-serif;
   font-size: 1rem;
   letter-spacing: 0.2em;
@@ -2374,5 +2329,6 @@ html.moos-pulse .interactive-grid-bg__spotlight {
 @media (prefers-reduced-motion: reduce) {
   .landing-marquee__track {
     animation: none;
+    transform: none;
   }
 }

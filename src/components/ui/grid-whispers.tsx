@@ -3,11 +3,12 @@
 import { useLocale } from "next-intl";
 import { GRID_SIZE, GRID_WHISPERS } from "@/lib/viewport/grid-whispers";
 
+/** Hidden grid labels — only visible during Alt+G or Shift-hold grid scan. */
 export function GridWhispers() {
   const locale = useLocale();
 
   return (
-    <div className="interactive-grid-bg__whispers" aria-hidden>
+    <div className="grid-whispers-layer" aria-hidden>
       {GRID_WHISPERS.map((whisper) => (
         <span
           key={whisper.id}
