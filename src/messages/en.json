@@ -57,7 +57,31 @@
     "success": "Thanks! We'll get back to you as soon as possible.",
     "error": "Something went wrong. Please try again.",
     "loginPrompt": "Sign in to view your requests.",
-    "myRequests": "My requests"
+    "myRequests": "My requests",
+    "process": {
+      "label": "What to expect",
+      "title": "How commissions work",
+      "intro": "A straightforward path from idea to printed piece — no surprises along the way.",
+      "note": "We usually reply within 1–2 business days. There’s no obligation until you approve a quote.",
+      "steps": {
+        "brief": {
+          "title": "Brief",
+          "body": "Tell us your idea — size, material, colour, use case, and deadline. Attach an STL or reference images if you have them."
+        },
+        "model": {
+          "title": "Model & quote",
+          "body": "We review your request, suggest FDM or resin, and send a quote. We refine the 3D model until you’re happy to approve."
+        },
+        "print": {
+          "title": "Print",
+          "body": "Once approved, we print and inspect every piece. We’ll reach out if anything needs a quick check-in."
+        },
+        "deliver": {
+          "title": "Deliver",
+          "body": "Carefully packed and shipped from Belgium. You’ll get tracking when your order leaves the studio."
+        }
+      }
+    }
   },
   "gallery": {
     "title": "Gallery",
@@ -76,7 +100,19 @@
     "submit": "Send",
     "sending": "Sending…",
     "success": "Message sent! We'll get back to you soon.",
-    "error": "Something went wrong. Please try again."
+    "error": "Something went wrong. Please try again.",
+    "details": {
+      "label": "Studio",
+      "title": "Find us",
+      "intro": "Drop by the studio in Ghent, or reach out by email — we’re happy to help with prints, commissions and questions.",
+      "emailLabel": "Email",
+      "phoneLabel": "Phone",
+      "addressLabel": "Address",
+      "hoursLabel": "Hours",
+      "hoursValue": "By appointment — email us to plan a visit.",
+      "mapTitle": "Moosdesign on Kongostraat 18, Ghent",
+      "directions": "Open in Google Maps"
+    }
   },
   "auth": {
     "signInTitle": "Sign in",
@@ -92,7 +128,21 @@
     "hasAccount": "Already have an account?",
     "createAccount": "Create one",
     "signInInstead": "Sign in",
-    "backToSite": "← Back to site"
+    "backToSite": "← Back to site",
+    "errors": {
+      "userNotFound": "No account found with this email. Check the address or create an account.",
+      "invalidCredentials": "Incorrect password. Try again.",
+      "oauthOnly": "This email uses Google sign-in. Continue with Google below.",
+      "emailInUse": "An account with this email already exists.",
+      "invalidInput": "Please check your details and try again.",
+      "credentials": "Sign in failed. Check your email and password.",
+      "oauthAccountNotLinked": "This email is already linked to another sign-in method.",
+      "oauth": "Google sign-in failed. Please try again.",
+      "accessDenied": "Access denied. Please try again.",
+      "configuration": "Sign-in is temporarily unavailable. Please try again later.",
+      "databaseUnavailable": "Sign-in is temporarily unavailable. Please try again later.",
+      "generic": "Something went wrong. Please try again."
+    }
   },
   "account": {
     "title": "My account",

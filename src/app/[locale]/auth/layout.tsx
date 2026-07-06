@@ -1,5 +1,4 @@
 import { setRequestLocale } from "next-intl/server";
-import { SiteShell } from "@/components/layout/site-shell";
 
 export default async function AuthLayout({
   children,
@@ -11,9 +10,5 @@ export default async function AuthLayout({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return (
-    <SiteShell>
-      <div className="landing-auth">{children}</div>
-    </SiteShell>
-  );
+  return <div className="landing-auth-layout">{children}</div>;
 }

@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { LandingPageHeader } from "@/components/landing/landing-page-header";
 import { LandingPageSection } from "@/components/landing/landing-page-section";
 import { ContactForm } from "@/components/forms/contact-form";
+import { ContactDetailsAside } from "@/components/forms/contact-details-aside";
 
 export async function generateMetadata({
   params,
@@ -32,7 +33,12 @@ export default async function ContactPage({
         tone="dark"
       />
       <LandingPageSection tone="putty">
-        <ContactForm />
+        <div className="landing-contact">
+          <div className="landing-contact__form">
+            <ContactForm />
+          </div>
+          <ContactDetailsAside />
+        </div>
       </LandingPageSection>
     </>
   );

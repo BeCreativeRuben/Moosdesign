@@ -12,6 +12,13 @@ import {
   users,
   verificationTokens,
 } from "@/lib/db/schema";
+import {
+  DatabaseUnavailableError,
+  InvalidCredentialsError,
+  InvalidInputError,
+  OAuthOnlyAccountError,
+  UserNotFoundError,
+} from "@/lib/auth/errors";
 
 const credentialsSchema = z.object({
   email: z.string().email(),
@@ -45,10 +52,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (!process.env.DATABASE_URL) return null;
+        if (!process.env.DATABASE_URL) {
+          throw new DatabaseUnavailableError();
+        }
 
         const parsed = credentialsSchema.safeParse(credentials);
-        if (!parsed.success) return null;
+        if (!parsed.success) {
+          throw new InvalidInputError();
+        }
 
         const db = getDb();
         const [user] = await db
@@ -57,13 +68,21 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           .where(eq(users.email, parsed.data.email))
           .limit(1);
 
-        if (!user?.passwordHash) return null;
+        if (!user) {
+          throw new UserNotFoundError();
+        }
+
+        if (!user.passwordHash) {
+          throw new OAuthOnlyAccountError();
+        }
 
         const valid = await bcrypt.compare(
           parsed.data.password,
           user.passwordHash,
         );
-        if (!valid) return null;
+        if (!valid) {
+          throw new InvalidCredentialsError();
+        }
 
         return {
           id: user.id,

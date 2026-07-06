@@ -21,7 +21,7 @@ export async function registerUser(formData: FormData) {
   });
 
   if (!parsed.success) {
-    return { error: "Invalid input" };
+    return { error: "invalid_input" as const };
   }
 
   const existing = await db
@@ -31,7 +31,7 @@ export async function registerUser(formData: FormData) {
     .limit(1);
 
   if (existing.length > 0) {
-    return { error: "Email already in use" };
+    return { error: "email_in_use" as const };
   }
 
   const passwordHash = await bcrypt.hash(parsed.data.password, 12);

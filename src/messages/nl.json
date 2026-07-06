@@ -57,7 +57,31 @@
     "success": "Bedankt! We nemen zo snel mogelijk contact op.",
     "error": "Er ging iets mis. Probeer opnieuw.",
     "loginPrompt": "Log in om je aanvragen te bekijken.",
-    "myRequests": "Mijn aanvragen"
+    "myRequests": "Mijn aanvragen",
+    "process": {
+      "label": "Wat je mag verwachten",
+      "title": "Hoe commissions werken",
+      "intro": "Een duidelijk traject van idee tot afgewerkt stuk — zonder verrassingen onderweg.",
+      "note": "We antwoorden meestal binnen 1–2 werkdagen. Er is geen verplichting tot je een offerte goedkeurt.",
+      "steps": {
+        "brief": {
+          "title": "Brief",
+          "body": "Vertel ons je idee — formaat, materiaal, kleur, gebruik en deadline. Voeg een STL of referentiebeelden toe als je die hebt."
+        },
+        "model": {
+          "title": "Model & offerte",
+          "body": "We bekijken je aanvraag, adviseren FDM of resin, en sturen een offerte. We verfijnen het 3D-model tot je akkoord geeft."
+        },
+        "print": {
+          "title": "Print",
+          "body": "Na goedkeuring printen en controleren we elk stuk. We nemen contact op als er iets extra moet worden afgestemd."
+        },
+        "deliver": {
+          "title": "Levering",
+          "body": "Zorgvuldig verpakt en verstuurd vanuit België. Je krijgt tracking zodra je bestelling het atelier verlaat."
+        }
+      }
+    }
   },
   "gallery": {
     "title": "Galerij",
@@ -76,7 +100,19 @@
     "submit": "Versturen",
     "sending": "Versturen…",
     "success": "Bericht verstuurd! We nemen snel contact op.",
-    "error": "Er ging iets mis. Probeer opnieuw."
+    "error": "Er ging iets mis. Probeer opnieuw.",
+    "details": {
+      "label": "Atelier",
+      "title": "Bezoek ons",
+      "intro": "Kom langs in Gent, of mail ons — we helpen je graag met prints, commissions en vragen.",
+      "emailLabel": "E-mail",
+      "phoneLabel": "Telefoon",
+      "addressLabel": "Adres",
+      "hoursLabel": "Openingsuren",
+      "hoursValue": "Op afspraak — mail ons om een bezoek te plannen.",
+      "mapTitle": "Moosdesign op Kongostraat 18, Gent",
+      "directions": "Open in Google Maps"
+    }
   },
   "auth": {
     "signInTitle": "Inloggen",
@@ -92,7 +128,21 @@
     "hasAccount": "Al een account?",
     "createAccount": "Maak er een aan",
     "signInInstead": "Log in",
-    "backToSite": "← Terug naar site"
+    "backToSite": "← Terug naar site",
+    "errors": {
+      "userNotFound": "Geen account gevonden met dit e-mailadres. Controleer het adres of maak een account aan.",
+      "invalidCredentials": "Onjuist wachtwoord. Probeer opnieuw.",
+      "oauthOnly": "Dit e-mailadres gebruikt Google-inloggen. Ga verder met Google hieronder.",
+      "emailInUse": "Er bestaat al een account met dit e-mailadres.",
+      "invalidInput": "Controleer je gegevens en probeer opnieuw.",
+      "credentials": "Inloggen mislukt. Controleer je e-mail en wachtwoord.",
+      "oauthAccountNotLinked": "Dit e-mailadres is al gekoppeld aan een andere inlogmethode.",
+      "oauth": "Google-inloggen mislukt. Probeer opnieuw.",
+      "accessDenied": "Toegang geweigerd. Probeer opnieuw.",
+      "configuration": "Inloggen is tijdelijk niet beschikbaar. Probeer later opnieuw.",
+      "databaseUnavailable": "Inloggen is tijdelijk niet beschikbaar. Probeer later opnieuw.",
+      "generic": "Er ging iets mis. Probeer opnieuw."
+    }
   },
   "account": {
     "title": "Mijn account",

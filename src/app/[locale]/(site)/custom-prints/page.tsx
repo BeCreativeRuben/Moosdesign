@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { auth } from "@/lib/auth";
 import { CustomPrintForm } from "@/components/forms/custom-print-form";
+import { CommissionProcessAside } from "@/components/forms/commission-process-aside";
 import { Link } from "@/lib/i18n/navigation";
 import { getUserCustomRequests } from "@/lib/queries";
 import { LandingPageHeader } from "@/components/landing/landing-page-header";
@@ -46,8 +47,11 @@ export default async function CustomPrintsPage({
         tone="dark"
       />
       <LandingPageSection tone="paper">
-        <div className="landing-form landing-form--wide">
-          <CustomPrintForm defaultEmail={session?.user?.email ?? undefined} />
+        <div className="landing-commission">
+          <div className="landing-commission__form">
+            <CustomPrintForm defaultEmail={session?.user?.email ?? undefined} />
+          </div>
+          <CommissionProcessAside />
         </div>
 
         {session?.user ? (

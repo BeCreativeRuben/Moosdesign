@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 import { setLenis } from "@/lib/viewport/lenis-instance";
-import { ensureFrameLoop, subscribeFrame } from "@/lib/viewport/frame-loop";
+import { subscribeFrame } from "@/lib/viewport/frame-loop";
 
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
@@ -13,9 +13,9 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     if (reduced || coarse) return;
 
     const lenis = new Lenis({
-      lerp: 0.12,
+      lerp: 0.2,
       smoothWheel: true,
-      wheelMultiplier: 0.9,
+      wheelMultiplier: 1,
       touchMultiplier: 1.2,
       autoRaf: false,
     });
@@ -25,11 +25,8 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 
     const unsubscribe = subscribeFrame((time) => {
       lenis.raf(time);
-      return lenis.isSmooth || Math.abs(lenis.velocity) > 0.05;
+      return lenis.isSmooth || Math.abs(lenis.velocity) > 0.02;
     });
-
-    const wake = () => ensureFrameLoop();
-    lenis.on("scroll", wake);
 
     return () => {
       unsubscribe();

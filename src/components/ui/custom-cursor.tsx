@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { ensureFrameLoop, subscribeFrame } from "@/lib/viewport/frame-loop";
+import { getLenis } from "@/lib/viewport/lenis-instance";
 import { setPointer } from "@/lib/viewport/pointer-state";
 
 type CursorState = "default" | "hover" | "active" | "secret";
@@ -89,13 +90,17 @@ export function CustomCursor() {
     const unsubscribe = subscribeFrame(() => {
       const ring = ringRef.current;
       const dot = dotRef.current;
+      const scrolling = getLenis()?.isSmooth === true;
 
       const dx = mx - rx;
       const dy = my - ry;
       const moving = Math.abs(dx) > 0.35 || Math.abs(dy) > 0.35;
       const recent = performance.now() - lastMove < IDLE_MS;
 
-      if (moving) {
+      if (scrolling) {
+        rx = mx;
+        ry = my;
+      } else if (moving) {
         rx += dx * RING_LERP;
         ry += dy * RING_LERP;
       } else {
@@ -109,6 +114,8 @@ export function CustomCursor() {
       if (dot) {
         dot.style.transform = `translate3d(${mx}px, ${my}px, 0) translate(-50%, -50%)`;
       }
+
+      if (scrolling) return false;
 
       return moving || recent || state === "active";
     });
