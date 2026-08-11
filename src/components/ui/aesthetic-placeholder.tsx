@@ -17,22 +17,22 @@ const tones: Record<
   { bg: string; grid: string; shape: string; shapeAlt: string; ink: string; flare: string; label: string }
 > = {
   light: {
-    bg: "#c9c5bb",
-    grid: "#0f0d0b",
-    shape: "#a39d93",
-    shapeAlt: "#8a8378",
-    ink: "#0f0d0b",
-    flare: "#e85a1f",
-    label: "#5c564d",
+    bg: "#e4e0d8",
+    grid: "#1a1714",
+    shape: "#b8b3ab",
+    shapeAlt: "#9a948c",
+    ink: "#1a1714",
+    flare: "#c8794a",
+    label: "#6b6560",
   },
   dark: {
-    bg: "#2a2621",
-    grid: "#f0ebe1",
-    shape: "#5c564d",
-    shapeAlt: "#4a4540",
-    ink: "#f0ebe1",
-    flare: "#e85a1f",
-    label: "#f0ebe1",
+    bg: "#4a4540",
+    grid: "#f5f3ef",
+    shape: "#6b6560",
+    shapeAlt: "#5c564d",
+    ink: "#f5f3ef",
+    flare: "#c8794a",
+    label: "#f5f3ef",
   },
 };
 

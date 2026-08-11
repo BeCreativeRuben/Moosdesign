@@ -1,5 +1,5 @@
 export const SITE_CONTACT = {
-  email: "hello@moosdesign.be",
+  email: "mowgli@moos-design.be",
   phone: process.env.NEXT_PUBLIC_CONTACT_PHONE,
   street: "Kongostraat 18",
   postalCode: "9000",

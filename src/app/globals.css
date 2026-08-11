@@ -1,35 +1,37 @@
 @import "tailwindcss";
 
 :root {
-  /* Warm archival palette — surfaces read light → dark, accents stay restrained */
-  --cream: #f0ebe1;
-  --cream-dark: #ddd5c8;
-  --cream-deep: #c8bfb0;
-  --ink: #1c1814;
-  --ink-deep: #0f0d0b;
-  --ink-muted: #5c564d;
-  --gray-bg: #8a8378;
-  --gray-dark: #2a2621;
-  --concrete: #a39d93;
-  --paper: #f7f3eb;
-  --tan: #e5ddd0;
-  --signal: #c41e1e;
-  --signal-soft: rgb(196 30 30 / 0.1);
-  --flare: #e85a1f;
-  --flare-deep: #c94a12;
-  --landing-putty: #b8b4aa;
-  --landing-putty-light: #c9c5bb;
-  --hairline: rgb(15 13 11 / 0.14);
-  --hairline-strong: rgb(15 13 11 / 0.82);
-  --border-light: rgb(15 13 11 / 0.12);
-  --border-dark: rgb(240 235 225 / 0.14);
+  /* Soft grey / white / black — accents restrained */
+  --cream: #f5f3ef;
+  --cream-dark: #e6e2db;
+  --cream-deep: #d2cdc4;
+  --ink: #2a2622;
+  --ink-deep: #1a1714;
+  --ink-muted: #6b6560;
+  --gray-bg: #9a948c;
+  --gray-dark: #4a4540;
+  --concrete: #b8b3ab;
+  --paper: #faf9f7;
+  --tan: #ebe7e0;
+  --signal: #b91c1c;
+  --signal-soft: rgb(185 28 28 / 0.1);
+  /* Softened flare — used sparingly (primary CTAs) */
+  --flare: #c8794a;
+  --flare-deep: #a86238;
+  --landing-putty: #e4e0d8;
+  --landing-putty-light: #efece6;
+  --hairline: rgb(26 23 20 / 0.12);
+  --hairline-strong: rgb(26 23 20 / 0.7);
+  --border-light: rgb(26 23 20 / 0.1);
+  --border-dark: rgb(245 243 239 / 0.14);
   --panel-radius: 2rem;
   --panel-radius-lg: 2.5rem;
+  --btn-radius: 0.5rem;
   --grid-x: 50%;
   --grid-y: 40%;
   --grid-active: 0;
   --grid-size: 48px;
-  --grid-faint: rgb(15 13 11 / 0.055);
+  --grid-faint: rgb(26 23 20 / 0.045);
   --grid-bright: rgb(255 252 247 / 0.42);
   --grid-spotlight-size: 280px;
 }
@@ -880,7 +882,7 @@ html.mushroom-mode {
 }
 
 .landing-eyebrow--flare {
-  color: var(--flare);
+  color: var(--ink-muted);
 }
 
 .landing-section-title {
@@ -914,14 +916,14 @@ html.mushroom-mode {
 .landing-nav__logo {
   display: flex;
   align-items: center;
-  background: var(--flare);
+  background: var(--gray-dark);
   padding: 0.85rem 1.25rem;
   border-right: 2px solid var(--ink-deep);
   transition: background-color 0.15s ease;
 }
 
 .landing-nav__logo:hover {
-  background: var(--flare-deep);
+  background: var(--ink-deep);
 }
 
 .landing-nav__links {
@@ -1455,7 +1457,7 @@ html.mushroom-mode {
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1;
-  color: var(--flare);
+  color: var(--ink-muted);
 }
 
 .landing-commission__step-title {
@@ -1559,7 +1561,7 @@ html.mushroom-mode {
 }
 
 .landing-contact__item a:hover {
-  color: var(--flare);
+  color: var(--ink-deep);
 }
 
 .landing-contact__address {
@@ -1602,7 +1604,7 @@ html.mushroom-mode {
 }
 
 .landing-contact__map-link:hover {
-  background: var(--flare);
+  background: var(--ink-deep);
   color: var(--cream);
 }
 
@@ -1621,6 +1623,14 @@ html.mushroom-mode {
   margin-bottom: 0.5rem;
   font-family: var(--font-geist-mono), ui-monospace, monospace;
   font-size: 0.7rem;
+  color: var(--ink-muted);
+}
+
+.landing-form__lead {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.78rem;
+  line-height: 1.65;
   color: var(--ink-muted);
 }
 
@@ -1845,7 +1855,7 @@ html.mushroom-mode {
 }
 
 .landing-auth__back a:hover {
-  color: var(--flare);
+  color: var(--ink-deep);
 }
 
 /* Admin */
@@ -2010,7 +2020,7 @@ html.mushroom-mode {
 }
 
 .landing-hero__title--flare {
-  color: var(--flare);
+  color: var(--ink-muted);
 }
 
 .landing-hero__body {
@@ -2070,7 +2080,7 @@ html.mushroom-mode {
   justify-content: space-between;
   gap: 1.5rem;
   padding: 1.5rem 1rem 2rem;
-  background: var(--ink-deep);
+  background: var(--gray-dark);
   color: var(--cream);
 }
 
@@ -2111,6 +2121,7 @@ html.mushroom-mode {
   min-height: 3rem;
   padding: 0.9rem 1.25rem;
   border: 2px solid var(--ink-deep);
+  border-radius: var(--btn-radius);
   font-family: var(--font-geist-mono), ui-monospace, monospace;
   font-size: 0.7rem;
   font-weight: 700;
@@ -2153,15 +2164,15 @@ html.mushroom-mode {
 }
 
 .landing-btn--ink:hover {
-  background: var(--flare);
-  color: var(--ink-deep);
+  background: var(--gray-dark);
+  color: var(--cream);
 }
 
 /* ── Marquee ── */
 .landing-marquee {
   overflow: hidden;
   border-bottom: 2px solid var(--ink-deep);
-  background: var(--ink-deep);
+  background: var(--gray-dark);
   padding: 0.65rem 0;
 }
 
@@ -2201,14 +2212,14 @@ html.mushroom-mode {
 }
 
 .landing-marquee__plus {
-  color: var(--flare);
+  color: var(--cream-deep);
 }
 
 /* ── Process ── */
 .landing-process {
   border-bottom: 2px solid var(--ink-deep);
   background: var(--landing-putty-light);
-  border-top: 4px solid var(--flare);
+  border-top: 4px solid var(--gray-bg);
 }
 
 .landing-process__head {
@@ -2283,7 +2294,7 @@ html.mushroom-mode {
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 1;
-  color: var(--flare);
+  color: var(--ink-muted);
 }
 
 .landing-process__step {
@@ -2352,7 +2363,7 @@ html.mushroom-mode {
 }
 
 .landing-shop__all:hover {
-  color: var(--flare);
+  color: var(--cream);
 }
 
 .landing-shop__grid {
@@ -2424,7 +2435,7 @@ html.mushroom-mode {
   top: 0.65rem;
   right: 0.65rem;
   z-index: 1;
-  background: var(--flare);
+  background: var(--cream);
   padding: 0.25rem 0.5rem;
   font-family: var(--font-geist-mono), ui-monospace, monospace;
   font-size: 0.55rem;
@@ -2452,7 +2463,7 @@ html.mushroom-mode {
   font-family: var(--font-brutal), sans-serif;
   font-size: 1.35rem;
   letter-spacing: 0.04em;
-  color: var(--flare);
+  color: var(--cream);
 }
 
 /* ── Gallery ── */
@@ -2522,12 +2533,12 @@ html.mushroom-mode {
 }
 
 .landing-gallery__link:hover {
-  color: var(--flare);
+  color: var(--ink-muted);
 }
 
 /* ── Footer ── */
 .landing-footer {
-  background: var(--ink-deep);
+  background: var(--gray-dark);
   color: var(--cream);
   padding: 1.5rem 1rem;
   padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0));
@@ -2590,7 +2601,7 @@ html.mushroom-mode {
 }
 
 .landing-footer__links a:hover {
-  color: var(--flare);
+  color: var(--cream);
 }
 
 .landing-footer__copy {

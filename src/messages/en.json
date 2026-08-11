@@ -46,39 +46,44 @@
   },
   "customPrints": {
     "title": "Custom Prints",
-    "subtitle": "Got a unique idea? Tell us about it.",
+    "subtitle": "Share a short idea — we’ll contact you personally.",
+    "lead": "Keep it light for now: a rough idea is enough. We’ll reach out ourselves to discuss details, materials and next steps.",
     "email": "Email address",
-    "description": "Description",
-    "descriptionHint": "The more details the better — size, material, colour, use case, deadline…",
+    "contactPreference": "How should we contact you?",
+    "contactPreferenceHint": "Leave an email or WhatsApp number — whichever you prefer.",
+    "contactPreferencePlaceholder": "e.g. WhatsApp +32 … or reply by email",
+    "description": "Short description",
+    "descriptionHint": "A few lines are fine — size, use, or vibe. We’ll dig deeper when we contact you.",
     "file": "File (optional)",
     "fileHint": "STL, OBJ or reference images — max. 10 MB",
+    "studioEmailLabel": "Studio email:",
     "submit": "Submit request",
     "submitting": "Sending…",
-    "success": "Thanks! We'll get back to you as soon as possible.",
+    "success": "Thanks! We’ll contact you soon via the preference you left.",
     "error": "Something went wrong. Please try again.",
     "loginPrompt": "Sign in to view your requests.",
     "myRequests": "My requests",
     "process": {
       "label": "What to expect",
       "title": "How commissions work",
-      "intro": "A straightforward path from idea to printed piece — no surprises along the way.",
-      "note": "We usually reply within 1–2 business days. There’s no obligation until you approve a quote.",
+      "intro": "You leave a short note. We contact you. Together we shape the piece — then we print and ship.",
+      "note": "We usually reply within 1–2 business days. No obligation until you approve a quote.",
       "steps": {
         "brief": {
-          "title": "Brief",
-          "body": "Tell us your idea — size, material, colour, use case, and deadline. Attach an STL or reference images if you have them."
+          "title": "Leave a note",
+          "body": "Share a short idea and how we can reach you (email or WhatsApp). No full brief needed yet."
         },
         "model": {
-          "title": "Model & quote",
-          "body": "We review your request, suggest FDM or resin, and send a quote. We refine the 3D model until you’re happy to approve."
+          "title": "We contact you",
+          "body": "We reply personally, ask what’s missing, and advise on material, size and finish."
         },
         "print": {
-          "title": "Print",
-          "body": "Once approved, we print and inspect every piece. We’ll reach out if anything needs a quick check-in."
+          "title": "Approve & print",
+          "body": "You get a clear quote and model check. After your OK, we print and inspect every piece."
         },
         "deliver": {
           "title": "Deliver",
-          "body": "Carefully packed and shipped from Belgium. You’ll get tracking when your order leaves the studio."
+          "body": "Packed and shipped from Belgium, with tracking when your order leaves the studio."
         }
       }
     }
@@ -206,12 +211,12 @@
     "process": {
       "label": "Custom work",
       "title": "YOUR VISION. OUR FILAMENT.",
-      "body": "Send a brief, approve the model, we print and deliver. Simple, direct, no noise.",
+      "body": "Leave a short note, we contact you, then we print and deliver. Simple and direct.",
       "cta": "Start custom request",
       "steps": {
-        "brief": "Brief",
-        "model": "Model",
-        "print": "Print",
+        "brief": "Leave a note",
+        "model": "We contact you",
+        "print": "Approve & print",
         "deliver": "Deliver"
       }
     },

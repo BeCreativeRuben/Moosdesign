@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 import { useTranslations } from "next-intl";
 import { submitCustomRequest, type CustomRequestState } from "@/lib/actions/custom-request";
+import { SITE_CONTACT } from "@/lib/site/contact";
 
 export function CustomPrintForm({ defaultEmail }: { defaultEmail?: string }) {
   const t = useTranslations("customPrints");
@@ -21,6 +22,8 @@ export function CustomPrintForm({ defaultEmail }: { defaultEmail?: string }) {
 
   return (
     <form action={action} className="landing-form landing-form--wide">
+      <p className="landing-form__hint landing-form__lead">{t("lead")}</p>
+
       <div className="landing-form__field">
         <label htmlFor="email">{t("email")}</label>
         <input
@@ -29,6 +32,20 @@ export function CustomPrintForm({ defaultEmail }: { defaultEmail?: string }) {
           type="email"
           required
           defaultValue={defaultEmail}
+          className="field-input"
+        />
+      </div>
+
+      <div className="landing-form__field">
+        <label htmlFor="contactPreference">{t("contactPreference")}</label>
+        <p className="landing-form__hint">{t("contactPreferenceHint")}</p>
+        <input
+          id="contactPreference"
+          name="contactPreference"
+          type="text"
+          required
+          minLength={3}
+          placeholder={t("contactPreferencePlaceholder")}
           className="field-input"
         />
       </div>
@@ -57,6 +74,13 @@ export function CustomPrintForm({ defaultEmail }: { defaultEmail?: string }) {
           className="landing-form__file"
         />
       </div>
+
+      <p className="landing-form__note">
+        {t("studioEmailLabel")}{" "}
+        <a href={`mailto:${SITE_CONTACT.email}`} className="landing-form__login-link">
+          {SITE_CONTACT.email}
+        </a>
+      </p>
 
       {state.error && (
         <p className="landing-form__error">{t("error")}</p>

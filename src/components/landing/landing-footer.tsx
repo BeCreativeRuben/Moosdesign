@@ -15,7 +15,7 @@ export async function LandingFooter() {
         <div className="landing-footer__links">
           <Link href="/contact">{t("footer.contact")}</Link>
           <Link href="/shop">{t("footer.shop")}</Link>
-          <a href="mailto:hello@moosdesign.be">hello@moosdesign.be</a>
+          <a href="mailto:mowgli@moos-design.be">mowgli@moos-design.be</a>
         </div>
         <p className="landing-footer__copy">© {year} — {t("footer.rights")}</p>
       </div>

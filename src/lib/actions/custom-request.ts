@@ -10,6 +10,7 @@ import { z } from "zod";
 const customRequestSchema = z.object({
   email: z.string().email(),
   description: z.string().min(10),
+  contactPreference: z.string().min(3),
 });
 
 export type CustomRequestState = {
@@ -26,6 +27,7 @@ export async function submitCustomRequest(
   const parsed = customRequestSchema.safeParse({
     email: formData.get("email"),
     description: formData.get("description"),
+    contactPreference: formData.get("contactPreference"),
   });
 
   if (!parsed.success) {
@@ -49,12 +51,18 @@ export async function submitCustomRequest(
     fileName = file.name;
   }
 
+  const descriptionWithContact = [
+    parsed.data.description,
+    "",
+    `Preferred contact: ${parsed.data.contactPreference}`,
+  ].join("\n");
+
   const [request] = await db
     .insert(customRequests)
     .values({
       userId: session?.user?.id,
       email: parsed.data.email,
-      description: parsed.data.description,
+      description: descriptionWithContact,
       fileUrl,
       fileName,
     })
@@ -66,6 +74,7 @@ export async function submitCustomRequest(
     subject: `Nieuwe custom print aanvraag — ${parsed.data.email}`,
     text: [
       `Email: ${parsed.data.email}`,
+      `Contact voorkeur: ${parsed.data.contactPreference}`,
       `Beschrijving:\n${parsed.data.description}`,
       fileUrl ? `Bestand: ${fileUrl}` : "",
     ]
@@ -77,7 +86,7 @@ export async function submitCustomRequest(
     from: FROM_EMAIL,
     to: parsed.data.email,
     subject: "We hebben je aanvraag ontvangen — Moosdesign",
-    text: "Bedankt voor je custom print aanvraag! We bekijken je bericht en nemen zo snel mogelijk contact op.",
+    text: "Bedankt voor je custom print aanvraag! We bekijken je bericht en nemen zo snel mogelijk contact op via de voorkeur die je hebt doorgegeven.",
   });
 
   return { success: true, id: request.id };

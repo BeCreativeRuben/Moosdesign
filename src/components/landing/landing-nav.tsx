@@ -26,7 +26,6 @@ export function LandingNav() {
   const currentLocale = pathname.startsWith("/en") ? "en" : "nl";
   const otherLocale = currentLocale === "nl" ? "en" : "nl";
   const pathWithoutLocale = pathname.replace(/^\/(nl|en)/, "") || "/";
-  const isHome = localePath === "/";
 
   useEffect(() => {
     setMenuOpen(false);
@@ -41,18 +40,16 @@ export function LandingNav() {
 
   const navLinks = (
     <>
-      {!isHome && (
-        <Link
-          href="/"
-          className={cn(
-            "landing-nav__link",
-            localePath === "/" && "landing-nav__link--active",
-          )}
-          onClick={() => setMenuOpen(false)}
-        >
-          {tNav("home")}
-        </Link>
-      )}
+      <Link
+        href="/"
+        className={cn(
+          "landing-nav__link",
+          localePath === "/" && "landing-nav__link--active",
+        )}
+        onClick={() => setMenuOpen(false)}
+      >
+        {tNav("home")}
+      </Link>
       {links.map(({ key, href }) => {
         const active = localePath.startsWith(href);
         return (
@@ -105,11 +102,11 @@ export function LandingNav() {
     <header className={cn("landing-nav", menuOpen && "landing-nav--open")}>
       <Link href="/" className="landing-nav__logo" data-secret="logo">
         <Image
-          src="/images/logo-long.jpg"
+          src="/images/logo-short.jpg"
           alt="Moosdesign"
-          width={160}
+          width={42}
           height={42}
-          className="h-8 w-auto object-contain brightness-0 invert sm:h-9"
+          className="h-9 w-9 object-contain sm:h-10 sm:w-10"
           priority
         />
       </Link>

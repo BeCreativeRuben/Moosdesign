@@ -6,4 +6,4 @@ export const FROM_EMAIL =
   process.env.RESEND_FROM_EMAIL ?? "Moosdesign <onboarding@resend.dev>";
 
 export const ADMIN_EMAIL =
-  process.env.ADMIN_EMAIL ?? "hello@moosdesign.be";
+  process.env.ADMIN_EMAIL ?? "mowgli@moos-design.be";
