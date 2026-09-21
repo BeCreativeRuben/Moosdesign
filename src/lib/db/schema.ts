@@ -97,6 +97,7 @@ export const products = pgTable("products", {
   descriptionNl: text("description_nl").notNull(),
   descriptionEn: text("description_en").notNull(),
   priceCents: integer("price_cents").notNull(),
+  /** @deprecated Unused with Mollie; pricing uses priceCents. */
   stripePriceId: text("stripe_price_id"),
   imageUrl: text("image_url"),
   featured: boolean("featured").notNull().default(false),
@@ -111,8 +112,11 @@ export const orders = pgTable("orders", {
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
   userId: text("user_id").references(() => users.id, { onDelete: "set null" }),
+  /** @deprecated Kept nullable for historical rows; checkout uses Mollie. */
   stripeSessionId: text("stripe_session_id"),
+  /** @deprecated Kept nullable for historical rows; checkout uses Mollie. */
   stripePaymentIntentId: text("stripe_payment_intent_id"),
+  molliePaymentId: text("mollie_payment_id"),
   status: orderStatusEnum("status").notNull().default("pending"),
   totalCents: integer("total_cents").notNull(),
   currency: text("currency").notNull().default("eur"),

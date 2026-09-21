@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { createProductFormAction, deleteProductFormAction } from "@/lib/actions/admin";
 import { getAllProducts } from "@/lib/queries";
-import { formatPrice } from "@/lib/stripe";
+import { formatPrice } from "@/lib/mollie";
 
 export default async function AdminProductsPage() {
   const t = await getTranslations("admin");

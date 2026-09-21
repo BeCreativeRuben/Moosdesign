@@ -82,6 +82,46 @@ const seedProducts = [
     published: true,
     stock: 3,
   },
+
+  {
+    slug: "demo-keychain",
+    nameNl: "Demo Sleutelhanger",
+    nameEn: "Demo Keychain",
+    descriptionNl:
+      "Ongepubliceerd demo-product voor checkout-tests. Niet zichtbaar in de shop.",
+    descriptionEn:
+      "Unpublished demo product for checkout tests. Not visible in the shop.",
+    priceCents: 990,
+    featured: false,
+    published: false,
+    stock: 50,
+  },
+  {
+    slug: "demo-coaster",
+    nameNl: "Demo Onderzetter",
+    nameEn: "Demo Coaster",
+    descriptionNl:
+      "Ongepubliceerd demo-product (coaster) voor Mollie test_ betalingen.",
+    descriptionEn:
+      "Unpublished demo product (coaster) for Mollie test_ payments.",
+    priceCents: 1250,
+    featured: false,
+    published: false,
+    stock: 50,
+  },
+  {
+    slug: "demo-figurine",
+    nameNl: "Demo Figuurtje",
+    nameEn: "Demo Figurine",
+    descriptionNl:
+      "Ongepubliceerd demo-figuurtje voor end-to-end checkout met Mollie.",
+    descriptionEn:
+      "Unpublished demo figurine for end-to-end Mollie checkout.",
+    priceCents: 2500,
+    featured: false,
+    published: false,
+    stock: 20,
+  },
 ];
 
 async function main() {

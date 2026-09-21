@@ -7,7 +7,7 @@ import {
   getLocalizedProductName,
   getProductBySlug,
 } from "@/lib/queries";
-import { formatPrice } from "@/lib/stripe";
+import { formatPrice } from "@/lib/mollie";
 import { PlaceholderImage } from "@/components/ui/placeholder-image";
 import { productPlaceholderVariant } from "@/components/ui/aesthetic-placeholder";
 import { BuyButton } from "@/components/shop/buy-button";

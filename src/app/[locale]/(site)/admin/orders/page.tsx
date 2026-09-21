@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { getAllOrders } from "@/lib/queries";
-import { formatPrice } from "@/lib/stripe";
+import { formatPrice } from "@/lib/mollie";
 
 export default async function AdminOrdersPage() {
   const t = await getTranslations("admin");
