@@ -15,9 +15,9 @@
   --tan: #ebe7e0;
   --signal: #b91c1c;
   --signal-soft: rgb(185 28 28 / 0.1);
-  /* Softened flare — used sparingly (primary CTAs) */
-  --flare: #c8794a;
-  --flare-deep: #a86238;
+  /* Safety yellow — primary CTAs. Deep is the hover step. */
+  --flare: #E2FF00;
+  --flare-deep: #C6E000;
   --landing-putty: #e4e0d8;
   --landing-putty-light: #efece6;
   --hairline: rgb(26 23 20 / 0.12);
@@ -160,13 +160,19 @@ html.grid-scan .grid-whispers-layer {
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--flare);
-  opacity: 0.85;
+  /* Safety yellow fails on the concrete backdrop (~1.8:1). Black text, yellow underline. */
+  color: #000;
+  text-decoration: underline;
+  text-decoration-color: var(--flare);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+  opacity: 1;
   user-select: none;
 }
 
 html.mushroom-mode .grid-whisper {
   color: var(--cream);
+  text-decoration: none;
 }
 
 html.mushroom-mode .site-backdrop {
@@ -786,7 +792,7 @@ html.custom-cursor-active * {
   height: 36px;
   width: 36px;
   border-color: var(--flare);
-  background: rgb(232 90 31 / 0.1);
+  background: rgb(226 255 0 / 0.1);
 }
 
 .custom-cursor[data-state="hover"] .custom-cursor__crosshair {
@@ -808,7 +814,7 @@ html.custom-cursor-active * {
   height: 44px;
   width: 44px;
   border-color: var(--flare);
-  background: rgb(232 90 31 / 0.16);
+  background: rgb(226 255 0 / 0.16);
 }
 
 .custom-cursor[data-state="secret"] .custom-cursor__dot {
@@ -836,7 +842,7 @@ html.custom-cursor-active * {
 }
 
 html.mushroom-mode {
-  --grid-bright: rgb(232 90 31 / 0.5);
+  --grid-bright: rgb(226 255 0 / 0.5);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1235,7 +1241,7 @@ html.mushroom-mode {
 
 .landing-banner--success {
   background: var(--flare);
-  color: var(--ink-deep);
+  color: #000;
 }
 
 .landing-banner--cancelled {
@@ -1270,7 +1276,12 @@ html.mushroom-mode {
   font-family: var(--font-brutal), sans-serif;
   font-size: clamp(2rem, 5vw, 3rem);
   letter-spacing: 0.04em;
-  color: var(--flare);
+  /* Safety yellow on putty is ~1.2:1. Keep the accent as an underline under black type. */
+  color: #000;
+  text-decoration: underline;
+  text-decoration-color: var(--flare);
+  text-decoration-thickness: 0.12em;
+  text-underline-offset: 0.12em;
 }
 
 .landing-product__desc {
@@ -1667,8 +1678,16 @@ html.mushroom-mode {
 }
 
 .landing-form__login-link {
-  color: var(--flare);
+  color: #000;
   font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--flare);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.landing-form__login-link:hover {
+  text-decoration-color: var(--flare-deep);
 }
 
 .landing-form__error {
@@ -1698,7 +1717,8 @@ html.mushroom-mode {
 }
 
 .landing-form__error-link:hover {
-  color: var(--flare);
+  color: #000;
+  text-decoration-color: var(--flare);
 }
 
 .landing-form__success {
@@ -1947,10 +1967,15 @@ html.mushroom-mode {
 
 .landing-admin__body button[type="submit"] {
   background: var(--flare);
-  color: var(--ink-deep);
+  color: #000;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+.landing-admin__body button[type="submit"]:hover {
+  background: var(--flare-deep);
+  color: #000;
 }
 
 /* ── Hero ── */
@@ -2139,12 +2164,12 @@ html.mushroom-mode {
 
 .landing-btn--flare {
   background: var(--flare);
-  color: var(--ink-deep);
+  color: #000;
 }
 
 .landing-btn--flare:hover {
-  background: var(--ink-deep);
-  color: var(--cream);
+  background: var(--flare-deep);
+  color: #000;
 }
 
 .landing-btn--ghost {
