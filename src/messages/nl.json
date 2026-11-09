@@ -42,7 +42,9 @@
     "redirecting": "Doorverwijzen…",
     "checkoutError": "Checkout mislukt. Probeer opnieuw.",
     "orderSuccess": "Bedankt voor je bestelling! Je ontvangt een bevestiging per e-mail.",
-    "orderCancelled": "Checkout geannuleerd — je bestelling is niet geplaatst."
+    "orderCancelled": "Checkout geannuleerd — je bestelling is niet geplaatst.",
+    "sample": "Voorbeeld",
+    "sampleName": "Voorbeeld {n}"
   },
   "customPrints": {
     "title": "Custom Prints",

@@ -32,25 +32,28 @@ export async function ShopProductGrid({
   if (products.length === 0) {
     return (
       <div className={gridClass}>
-        {Array.from({ length: emptyCount }, (_, i) => (
-          <div key={i} className="landing-shop__card landing-shop__card--static">
-            <div className="landing-shop__visual">
-              {i === 0 && (
-                <span className="landing-shop__badge">{tLanding("shop.badgeSoon")}</span>
-              )}
-              <PlaceholderImage
-                variant={productPlaceholderVariant(i)}
-                tone="dark"
-                index={`0${(i % 4) + 1}`}
-                label={t("empty")}
-              />
+        {Array.from({ length: emptyCount }, (_, i) => {
+          const n = (i % 4) + 1;
+          return (
+            <div key={i} className="landing-shop__card landing-shop__card--static">
+              <div className="landing-shop__visual">
+                {i === 0 && (
+                  <span className="landing-shop__badge">{tLanding("shop.badgeSoon")}</span>
+                )}
+                <PlaceholderImage
+                  variant={productPlaceholderVariant(i)}
+                  tone="dark"
+                  index={`0${n}`}
+                  label={t("sample")}
+                />
+              </div>
+              <div className="landing-shop__meta">
+                <p className="landing-shop__name">{t("sampleName", { n })}</p>
+                <p className="landing-shop__price">—</p>
+              </div>
             </div>
-            <div className="landing-shop__meta">
-              <p className="landing-shop__name">{t("empty")}</p>
-              <p className="landing-shop__price">—</p>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     );
   }
