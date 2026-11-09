@@ -22,7 +22,7 @@ const tones: Record<
     shape: "#b8b3ab",
     shapeAlt: "#9a948c",
     ink: "#1a1714",
-    flare: "#c8794a",
+    flare: "var(--flare)",
     label: "#6b6560",
   },
   dark: {
@@ -31,7 +31,7 @@ const tones: Record<
     shape: "#6b6560",
     shapeAlt: "#5c564d",
     ink: "#f5f3ef",
-    flare: "#c8794a",
+    flare: "var(--flare)",
     label: "#f5f3ef",
   },
 };
@@ -184,7 +184,24 @@ export function AestheticPlaceholder({
         <Grid tone={tone} />
         <Crosshair tone={tone} />
         <Shapes variant={variant} tone={tone} />
-        {index && (
+        {index && tone === "light" ? (
+          <text
+            x="32"
+            y="48"
+            fill="#000"
+            fontFamily="ui-monospace, monospace"
+            fontSize="28"
+            fontWeight="700"
+            textDecoration="underline"
+            style={{
+              textDecorationColor: "var(--flare)",
+              textDecorationThickness: "3px",
+              textUnderlineOffset: "4px",
+            }}
+          >
+            {index}
+          </text>
+        ) : index ? (
           <text
             x="32"
             y="48"
@@ -195,7 +212,7 @@ export function AestheticPlaceholder({
           >
             {index}
           </text>
-        )}
+        ) : null}
         {label && (
           <text
             x="32"
