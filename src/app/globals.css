@@ -16,8 +16,8 @@
   --signal: #b91c1c;
   --signal-soft: rgb(185 28 28 / 0.1);
   /* Safety yellow — primary CTAs. Deep is the hover step. */
-  --flare: #E2FF00;
-  --flare-deep: #C6E000;
+  --flare: #FFE635;
+  --flare-deep: #E6CC1F;
   --landing-putty: #e4e0d8;
   --landing-putty-light: #efece6;
   --hairline: rgb(26 23 20 / 0.12);
@@ -792,7 +792,7 @@ html.custom-cursor-active * {
   height: 36px;
   width: 36px;
   border-color: var(--flare);
-  background: rgb(226 255 0 / 0.1);
+  background: rgb(255 230 53 / 0.1);
 }
 
 .custom-cursor[data-state="hover"] .custom-cursor__crosshair {
@@ -814,7 +814,7 @@ html.custom-cursor-active * {
   height: 44px;
   width: 44px;
   border-color: var(--flare);
-  background: rgb(226 255 0 / 0.16);
+  background: rgb(255 230 53 / 0.16);
 }
 
 .custom-cursor[data-state="secret"] .custom-cursor__dot {
@@ -842,7 +842,7 @@ html.custom-cursor-active * {
 }
 
 html.mushroom-mode {
-  --grid-bright: rgb(226 255 0 / 0.5);
+  --grid-bright: rgb(255 230 53 / 0.5);
 }
 
 @media (prefers-reduced-motion: reduce) {
