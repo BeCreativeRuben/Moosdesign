@@ -10,7 +10,12 @@ export async function LandingShop({ locale }: { locale: string }) {
 
   let products: Awaited<ReturnType<typeof getPublishedProducts>> = [];
   try {
-    products = (await getPublishedProducts()).slice(0, PLACEHOLDER_COUNT);
+    // Featured products (set in the portal) come first on the home page.
+    const all = await getPublishedProducts();
+    products = [...all.filter((p) => p.featured), ...all.filter((p) => !p.featured)].slice(
+      0,
+      PLACEHOLDER_COUNT,
+    );
   } catch {
     // DB not connected
   }
