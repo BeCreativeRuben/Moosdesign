@@ -42,7 +42,9 @@
     "redirecting": "Redirecting…",
     "checkoutError": "Checkout failed. Please try again.",
     "orderSuccess": "Thanks for your order! You'll receive a confirmation by email.",
-    "orderCancelled": "Checkout cancelled — your order was not placed."
+    "orderCancelled": "Checkout cancelled — your order was not placed.",
+    "sample": "Sample",
+    "sampleName": "Sample {n}"
   },
   "customPrints": {
     "title": "Custom Prints",

@@ -2058,9 +2058,11 @@ html.mushroom-mode {
 }
 
 .landing-hero__visual {
+  position: relative;
   margin-top: 1.5rem;
   width: 100%;
   max-width: 14rem;
+  aspect-ratio: 1;
   overflow: hidden;
   border: 2px solid var(--ink-deep);
   box-shadow: 4px 4px 0 rgb(15 13 11 / 0.88);
@@ -2095,8 +2097,56 @@ html.mushroom-mode {
   }
 }
 
-.aesthetic-placeholder svg {
+.aesthetic-placeholder {
   display: block;
+  background: #2a2724;
+}
+
+.aesthetic-placeholder img {
+  display: block;
+}
+
+.aesthetic-placeholder__veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgb(0 0 0 / 0.18) 0%, transparent 28%, transparent 62%, rgb(0 0 0 / 0.45) 100%),
+    linear-gradient(90deg, rgb(0 0 0 / 0.12), transparent 24%);
+}
+
+.aesthetic-placeholder__index {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  z-index: 1;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--cream);
+  text-decoration: underline;
+  text-decoration-color: var(--flare);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+  text-shadow: 0 1px 8px rgb(0 0 0 / 0.55);
+}
+
+.aesthetic-placeholder__label {
+  position: absolute;
+  left: 0.85rem;
+  bottom: 0.85rem;
+  z-index: 1;
+  max-width: calc(100% - 1.7rem);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: rgb(245 243 239 / 0.78);
+  text-shadow: 0 1px 8px rgb(0 0 0 / 0.55);
 }
 
 .landing-hero__aside {
