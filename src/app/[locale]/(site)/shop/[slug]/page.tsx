@@ -52,7 +52,7 @@ export default async function ProductPage({
     // DB not connected
   }
 
-  if (!product) notFound();
+  if (!product || !product.published) notFound();
 
   const name = getLocalizedProductName(product, locale);
   const variant = productPlaceholderVariant(slug.length);
